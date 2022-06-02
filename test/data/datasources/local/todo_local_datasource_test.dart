@@ -41,7 +41,7 @@ void main() async {
   });
 
   test('Update todo task', () {
-    TodoModel todoModel1 = TodoModel("1","TodoTitleTest1", false);
+    TodoModel todoModel1 = TodoModel("1","1","TodoTitleTest1", false);
 
     todoLocalDataSourceImpl.add(todoModel1);
     expect(box.values.length, 1);

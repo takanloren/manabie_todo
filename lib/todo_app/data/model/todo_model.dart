@@ -8,11 +8,11 @@ part 'todo_model.g.dart';
 @JsonSerializable()
 @HiveType(typeId: 0)
 class TodoModel extends HiveObject implements Equatable{
-  TodoModel(this.title, this.description, this.completed);
+  TodoModel(this.id, this.title, this.description, this.completed);
 
   @HiveField(0)
   @JsonKey(name: 'task_id')
-  String id = const Uuid().v4();
+  String id;
 
   @HiveField(1)
   @JsonKey(name: 'todo_title')
@@ -31,8 +31,16 @@ class TodoModel extends HiveObject implements Equatable{
   Map<String, dynamic> toJson() => _$TodoModelToJson(this);
 
   @override
+  bool operator ==(Object other) => other is TodoModel && other.id == id;
+
+  @override
   List<Object?> get props => [id];
 
   @override
   bool? get stringify => true;
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => id.hashCode;
+
 }

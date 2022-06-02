@@ -1,5 +1,6 @@
 import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
 
 class TodoEntity extends TodoModel{
-  TodoEntity(title, description, completed) : super(title, description, completed);
+  TodoEntity(id, title, description, completed) : super(id, title, description, completed);
+
 }

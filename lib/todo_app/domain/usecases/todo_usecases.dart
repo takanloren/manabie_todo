@@ -3,6 +3,7 @@ import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
 
 import '../../../common/errors/failures.dart';
+import '../../data/model/todo_model.dart';
 import '../repositories/todo_repository.dart';
 
 class TodoUsecase{
@@ -15,7 +16,7 @@ class TodoUsecase{
       if(result.isLeft()){
         return Left(result.asLeft());
       }else{
-        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        final list = result.asRight().map((e) => TodoEntity(e.id, e.title, e.description, e.completed)).toList();
         return Right(list);
       }
   }
@@ -24,7 +25,7 @@ class TodoUsecase{
       if(result.isLeft()){
         return Left(result.asLeft());
       }else{
-        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        final list = result.asRight().map((e) => TodoEntity(e.id, e.title, e.description, e.completed)).toList();
         return Right(list);
       }
   }
@@ -34,7 +35,7 @@ class TodoUsecase{
       if(result.isLeft()){
         return Left(result.asLeft());
       }else{
-        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        final list = result.asRight().map((e) => TodoEntity(e.id, e.title, e.description, e.completed)).toList();
         return Right(list);
       }
   }
