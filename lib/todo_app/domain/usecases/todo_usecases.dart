@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
 
 import '../../../common/errors/failures.dart';
-import '../../data/model/todo_model.dart';
 import '../repositories/todo_repository.dart';
 
 class TodoUsecase{
@@ -11,14 +11,32 @@ class TodoUsecase{
   TodoUsecase({required this.todoRepository});
 
   Future<Either<Failure, List<TodoEntity>>> getAllTasks() async {
-      return await todoRepository.getAllTasks();
+      final result = await todoRepository.getAllTasks();
+      if(result.isLeft()){
+        return Left(result.asLeft());
+      }else{
+        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        return Right(list);
+      }
   }
   Future<Either<Failure, List<TodoEntity>>> getIncompleteTasks() async {
-      return await todoRepository.getIncompleteTasks();
+      final result = await todoRepository.getIncompleteTasks();
+      if(result.isLeft()){
+        return Left(result.asLeft());
+      }else{
+        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        return Right(list);
+      }
   }
 
   Future<Either<Failure, List<TodoEntity>>> getCompleteTasks() async {
-      return await todoRepository.getCompleteTasks();
+      final result = await todoRepository.getCompleteTasks();
+      if(result.isLeft()){
+        return Left(result.asLeft());
+      }else{
+        final list = result.asRight().map((e) => TodoEntity(e.title, e.description, e.completed)).toList();
+        return Right(list);
+      }
   }
 
   Future<Either<Failure, bool>> addTask(TodoEntity todoModel) async {

@@ -45,6 +45,7 @@ dependencies:
   #splash screen
   splashscreen: 1.2.0
   hive: ^2.2.1
+  hive_flutter: ^1.1.0
   uuid: ^3.0.6
   path_provider: ^2.0.10
 

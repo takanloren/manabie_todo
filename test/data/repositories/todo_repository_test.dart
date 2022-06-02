@@ -1,19 +1,15 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
+import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
 import 'package:manabie_todo/todo_app/data/repositories/todo_repository_impl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../datasources/local/todo_local_datasource_mock.dart';
 import '../model/todo_model_data.dart';
 import '../repositories/todo_repository_test.mocks.dart';
 
-extension EitherX<L, R> on Either<L, R> {
-  R asRight() => (this as Right).value;
-  L asLeft() => (this as Left).value;
-}
+
 
 @GenerateMocks([TodoLocalDataSource])
 void main(){
