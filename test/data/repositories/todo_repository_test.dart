@@ -31,115 +31,117 @@ void main(){
 
   });
 
-  test('Should get all the todo tasks', () async {
-    when(mockTodoLocalDataSource.getAll())
-        .thenAnswer((_) async => [todoModel1, todoModel2, todoModel3]);
+  group('TODO REPOSITORY TEST', () {
+    test('Should get all the todo tasks', () async {
+      when(mockTodoLocalDataSource.getAll())
+          .thenAnswer((_) async => [todoModel1, todoModel2, todoModel3]);
 
-    //then
-    final either = await todoRepositoryImpl.getAllTasks();
+      //then
+      final either = await todoRepositoryImpl.getAllTasks();
 
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      final result = either.asRight();
-      expect(result.length, 3);
-      expect(result[0].description, todoModel1.description);
-      expect(result[1].title, todoModel2.title);
-      expect(result[2].id, todoModel3.id);
-      verify(mockTodoLocalDataSource.getAll()).called(1);
-    }
-  });
-
-  test('Should get all the INCOMPLETE todo tasks', () async {
-    when(mockTodoLocalDataSource.getAll())
-        .thenAnswer((_) async => [todoModel1, todoModel4, todoModel5]);
-
-    //then
-    final either = await todoRepositoryImpl.getIncompleteTasks();
-
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      final result = either.asRight();
-      expect(result.length, 3);
-      expect(result[0].description, todoModel1.description);
-      expect(result[1].title, todoModel4.title);
-      expect(result[2].id, todoModel5.id);
-      verify(mockTodoLocalDataSource.getAll()).called(1);
-    }
-  });
-
-  test('Should get all the COMPLETE todo tasks', () async {
-    when(mockTodoLocalDataSource.getAll())
-        .thenAnswer((_) async => [todoModel2, todoModel3]);
-
-    //then
-    final either = await todoRepositoryImpl.getCompleteTasks();
-
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      final result = either.asRight();
-      expect(result.length, 2);
-      expect(result[0].description, todoModel2.description);
-      expect(result[1].title, todoModel3.title);
-      verify(mockTodoLocalDataSource.getAll()).called(1);
-    }
-  });
-
-  test('Add a todo task', () async {
-    when(mockTodoLocalDataSource.add(todoModel5))
-        .thenAnswer((_) async => 1);
-
-    when(mockTodoLocalDataSource.getAll())
-        .thenAnswer((_) async => [todoModel5]);
-
-    //then
-    final either = await todoRepositoryImpl.addTask(todoModel5);
-
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      final result = either.asRight();
-      expect(result, true);
-
-      final either2 = await todoRepositoryImpl.getAllTasks();
-
-      if(either2.isRight()){
-        final result = either2.asRight();
-        expect(result.length, 1);
-        expect(result[0].id, todoModel5.id);
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        final result = either.asRight();
+        expect(result.length, 3);
+        expect(result[0].description, todoModel1.description);
+        expect(result[1].title, todoModel2.title);
+        expect(result[2].id, todoModel3.id);
+        verify(mockTodoLocalDataSource.getAll()).called(1);
       }
-    }
+    });
 
-    verify(mockTodoLocalDataSource.add(todoModel5)).called(1);
-  });
+    test('Should get all the INCOMPLETE todo tasks', () async {
+      when(mockTodoLocalDataSource.getAll())
+          .thenAnswer((_) async => [todoModel1, todoModel4, todoModel5]);
 
-  test('Delete a todo task', () async {
-    //then
-    final either = await todoRepositoryImpl.removeTask(todoModel1);
+      //then
+      final either = await todoRepositoryImpl.getIncompleteTasks();
 
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      verify(mockTodoLocalDataSource.delete(todoModel1.id)).called(1);
-    }
-  });
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        final result = either.asRight();
+        expect(result.length, 3);
+        expect(result[0].description, todoModel1.description);
+        expect(result[1].title, todoModel4.title);
+        expect(result[2].id, todoModel5.id);
+        verify(mockTodoLocalDataSource.getAll()).called(1);
+      }
+    });
 
-  test('Update a todo task', () async {
-    //then
-    final either = await todoRepositoryImpl.updateTask(todoModel3);
+    test('Should get all the COMPLETE todo tasks', () async {
+      when(mockTodoLocalDataSource.getAll())
+          .thenAnswer((_) async => [todoModel2, todoModel3]);
 
-    if(either.isLeft()){
-      final Failure error = either.asLeft();
-      expect(error, isA<DataSourceFailure>());
-    }else{
-      verify(mockTodoLocalDataSource.put(todoModel3.id, todoModel3)).called(1);
-    }
+      //then
+      final either = await todoRepositoryImpl.getCompleteTasks();
+
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        final result = either.asRight();
+        expect(result.length, 2);
+        expect(result[0].description, todoModel2.description);
+        expect(result[1].title, todoModel3.title);
+        verify(mockTodoLocalDataSource.getAll()).called(1);
+      }
+    });
+
+    test('Add a todo task', () async {
+      when(mockTodoLocalDataSource.add(todoModel5))
+          .thenAnswer((_) async => 1);
+
+      when(mockTodoLocalDataSource.getAll())
+          .thenAnswer((_) async => [todoModel5]);
+
+      //then
+      final either = await todoRepositoryImpl.addTask(todoModel5);
+
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        final result = either.asRight();
+        expect(result, true);
+
+        final either2 = await todoRepositoryImpl.getAllTasks();
+
+        if(either2.isRight()){
+          final result = either2.asRight();
+          expect(result.length, 1);
+          expect(result[0].id, todoModel5.id);
+        }
+      }
+
+      verify(mockTodoLocalDataSource.add(todoModel5)).called(1);
+    });
+
+    test('Delete a todo task', () async {
+      //then
+      final either = await todoRepositoryImpl.removeTask(todoModel1);
+
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        verify(mockTodoLocalDataSource.delete(todoModel1.id)).called(1);
+      }
+    });
+
+    test('Update a todo task', () async {
+      //then
+      final either = await todoRepositoryImpl.updateTask(todoModel3);
+
+      if(either.isLeft()){
+        final Failure error = either.asLeft();
+        expect(error, isA<DataSourceFailure>());
+      }else{
+        verify(mockTodoLocalDataSource.put(todoModel3.id, todoModel3)).called(1);
+      }
+    });
   });
 }

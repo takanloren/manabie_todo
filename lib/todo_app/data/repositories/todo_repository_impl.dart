@@ -14,38 +14,76 @@ class TodoRepositoryImpl extends TodoRepository{
 
   @override
   Future<Either<Failure, bool>> addTask(TodoModel todoModel) async {
-    // TODO: implement addTask
-    return const Right(false);
+    try{
+      await todoLocalDataSource.add(todoModel);
+      return const Right(true);
+    }
+    catch(ex){
+      return Left(DataSourceFailure('addTask failed - $ex'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<TodoEntity>>> getAllTasks() async {
-    // TODO: implement getAllTasks
-    return const Left(DataSourceFailure('get all task failed'));
+  Future<Either<Failure, List<TodoModel>>> getAllTasks() async {
+    try{
+      final result = await todoLocalDataSource.getAll();
+      return Right(result);
+    }
+    catch(ex){
+      return Left(DataSourceFailure('get all task failed - $ex'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<TodoEntity>>> getCompleteTasks() async {
-    // TODO: implement getCompleteTasks
-    return const Left(DataSourceFailure('get completed task failed'));
+  Future<Either<Failure, List<TodoModel>>> getCompleteTasks() async {
+    try{
+      final getAll = await todoLocalDataSource.getAll();
+      var result = getAll.where((todo) => todo.completed).toList();
+      return Right(result);
+    }
+    catch(ex){
+      return Left(DataSourceFailure('get completed task failed - $ex'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<TodoEntity>>> getIncompleteTasks() async {
-    // TODO: implement getIncompleteTasks
-    return const Left(DataSourceFailure('get incomplete task failed'));
+  Future<Either<Failure, List<TodoModel>>> getIncompleteTasks() async {
+    try{
+      final getAll = await todoLocalDataSource.getAll();
+      var result = getAll.where((todo) => !todo.completed).toList();
+      return Right(result);
+    }
+    catch(ex){
+      return Left(DataSourceFailure('get incompleted task failed - $ex'));
+    }
   }
 
   @override
   Future<Either<Failure, bool>> removeTask(TodoModel todoModel) async {
-    // TODO: implement removeTask
-    return const Right(false);
+    try{
+      final getAll = await todoLocalDataSource.getAll();
+
+      if (getAll.any((v) => v.id == todoModel.id)) {
+        final removedIndex = getAll.indexWhere((v) => v.id == todoModel.id);
+        await todoLocalDataSource.deleteAtIndex(removedIndex);
+        return const Right(true);
+      }
+      return const Left(DataSourceFailure('remove task failed - Target task not existing'));
+    }
+    catch(ex){
+      return Left(DataSourceFailure('remove task failed - $ex'));
+    }
   }
 
   @override
   Future<Either<Failure, bool>> updateTask(TodoModel todoModel) async {
-    // TODO: implement updateTask
-    return const Right(false);
+    try{
+      await todoModel.save();
+      return const Right(true);
+    }
+    catch(ex){
+      return Left(DataSourceFailure('updateTask failed - $ex'));
+    }
   }
 
 }
