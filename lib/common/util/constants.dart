@@ -1,0 +1,1 @@
+const String TODO_LOCAL_STORAGE_NAME = 'todo_storage';
