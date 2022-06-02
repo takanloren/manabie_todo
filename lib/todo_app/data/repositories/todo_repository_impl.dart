@@ -8,9 +8,9 @@ import '../../domain/entities/todo_entity.dart';
 
 class TodoRepositoryImpl extends TodoRepository{
 
-  final TodoLocalDataSourceImpl todoLocalDataSourceImpl;
+  final TodoLocalDataSource todoLocalDataSource;
 
-  TodoRepositoryImpl(this.todoLocalDataSourceImpl);
+  TodoRepositoryImpl(this.todoLocalDataSource);
 
   @override
   Future<Either<Failure, bool>> addTask(TodoModel todoModel) async {
