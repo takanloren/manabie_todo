@@ -1,30 +1,31 @@
 import 'package:hive/hive.dart';
+import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
 import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
 
 import '../../../../common/datasources/local/base_local_datasource.dart';
 
-class TodoLocalDataSourceImpl extends BaseLocalDataSource<TodoModel>{
-  final Box<TodoModel> box; //= Hive.box<TodoModel>(TODO_LOCAL_STORAGE_NAME);
+class TodoSettingsLocalDataSourceImpl extends BaseLocalDataSource<TodoSettingsModel>{
+  final Box<TodoSettingsModel> box;
 
-  TodoLocalDataSourceImpl({required this.box});
+  TodoSettingsLocalDataSourceImpl({required this.box});
 
   @override
-  Future<TodoModel?> get(String key) async {
+  Future<TodoSettingsModel?> get(String key) async {
     return box.get(key);
   }
 
   @override
-  Future<List<TodoModel>> getAll() async {
+  Future<List<TodoSettingsModel>> getAll() async {
     return box.toMap().values.toList();
   }
 
   @override
-  Future<void> put(String key, TodoModel value) async {
+  Future<void> put(String key, TodoSettingsModel value) async {
     await box.put(key, value);
   }
 
   @override
-  Future<void> putAll(Map<String, TodoModel> items) async {
+  Future<void> putAll(Map<String, TodoSettingsModel> items) async {
     await box.putAll(items);
   }
 
@@ -46,8 +47,8 @@ class TodoLocalDataSourceImpl extends BaseLocalDataSource<TodoModel>{
   }
 
   @override
-  Future<int> add(TodoModel todoModel) async {
-    return box.add(todoModel);
+  Future<int> add(TodoSettingsModel settingsModel) async {
+    return box.add(settingsModel);
   }
 
   @override

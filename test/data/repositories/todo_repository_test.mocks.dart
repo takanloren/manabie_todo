@@ -4,9 +4,8 @@
 
 import 'dart:async' as _i3;
 
-import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart'
+import 'package:manabie_todo/common/datasources/local/base_local_datasource.dart'
     as _i2;
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -19,12 +18,12 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [TodoLocalDataSource].
+/// A class which mocks [BaseLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTodoLocalDataSource extends _i1.Mock
-    implements _i2.TodoLocalDataSource {
-  MockTodoLocalDataSource() {
+class MockBaseLocalDataSource<ModelType> extends _i1.Mock
+    implements _i2.BaseLocalDataSource<ModelType> {
+  MockBaseLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -34,22 +33,21 @@ class MockTodoLocalDataSource extends _i1.Mock
           returnValue: Future<List<String>>.value(<String>[]))
       as _i3.Future<List<String>>);
   @override
-  _i3.Future<_i4.TodoModel?> get(String? key) =>
+  _i3.Future<ModelType?> get(String? key) =>
       (super.noSuchMethod(Invocation.method(#get, [key]),
-              returnValue: Future<_i4.TodoModel?>.value())
-          as _i3.Future<_i4.TodoModel?>);
+          returnValue: Future<ModelType?>.value()) as _i3.Future<ModelType?>);
   @override
-  _i3.Future<List<_i4.TodoModel>> getAll() =>
+  _i3.Future<List<ModelType>> getAll() =>
       (super.noSuchMethod(Invocation.method(#getAll, []),
-              returnValue: Future<List<_i4.TodoModel>>.value(<_i4.TodoModel>[]))
-          as _i3.Future<List<_i4.TodoModel>>);
+              returnValue: Future<List<ModelType>>.value(<ModelType>[]))
+          as _i3.Future<List<ModelType>>);
   @override
-  _i3.Future<void> put(String? key, _i4.TodoModel? value) =>
+  _i3.Future<void> put(String? key, ModelType? value) =>
       (super.noSuchMethod(Invocation.method(#put, [key, value]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i3.Future<void> putAll(Map<String, _i4.TodoModel>? items) =>
+  _i3.Future<void> putAll(Map<String, ModelType>? items) =>
       (super.noSuchMethod(Invocation.method(#putAll, [items]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
@@ -64,7 +62,7 @@ class MockTodoLocalDataSource extends _i1.Mock
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
   @override
-  _i3.Future<int> add(_i4.TodoModel? todoModel) =>
+  _i3.Future<int> add(ModelType? todoModel) =>
       (super.noSuchMethod(Invocation.method(#add, [todoModel]),
           returnValue: Future<int>.value(0)) as _i3.Future<int>);
   @override

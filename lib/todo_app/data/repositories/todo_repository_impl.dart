@@ -1,14 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
-import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
 import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
 import 'package:manabie_todo/todo_app/domain/repositories/todo_repository.dart';
 
-import '../../domain/entities/todo_entity.dart';
+import '../../../common/datasources/local/base_local_datasource.dart';
 
 class TodoRepositoryImpl extends TodoRepository{
 
-  final TodoLocalDataSource todoLocalDataSource;
+  final BaseLocalDataSource todoLocalDataSource;
 
   TodoRepositoryImpl(this.todoLocalDataSource);
 
@@ -27,7 +26,7 @@ class TodoRepositoryImpl extends TodoRepository{
   Future<Either<Failure, List<TodoModel>>> getAllTasks() async {
     try{
       final result = await todoLocalDataSource.getAll();
-      return Right(result);
+      return Right(result as List<TodoModel>);
     }
     catch(ex){
       return Left(DataSourceFailure('get all task failed - $ex'));
@@ -39,7 +38,7 @@ class TodoRepositoryImpl extends TodoRepository{
     try{
       final getAll = await todoLocalDataSource.getAll();
       var result = getAll.where((todo) => todo.completed).toList();
-      return Right(result);
+      return Right(result as List<TodoModel>);
     }
     catch(ex){
       return Left(DataSourceFailure('get completed task failed - $ex'));
@@ -51,7 +50,7 @@ class TodoRepositoryImpl extends TodoRepository{
     try{
       final getAll = await todoLocalDataSource.getAll();
       var result = getAll.where((todo) => !todo.completed).toList();
-      return Right(result);
+      return Right(result as List<TodoModel>);
     }
     catch(ex){
       return Left(DataSourceFailure('get incompleted task failed - $ex'));
