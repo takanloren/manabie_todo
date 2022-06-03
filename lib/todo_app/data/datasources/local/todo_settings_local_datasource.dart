@@ -55,4 +55,9 @@ class TodoSettingsLocalDataSourceImpl extends BaseLocalDataSource<TodoSettingsMo
   Future<void> deleteAtIndex(int index) async {
     return box.deleteAt(index);
   }
+
+  @override
+  Future<void> putAt(int index, TodoSettingsModel value) {
+    return box.putAt(index, value);
+  }
 }

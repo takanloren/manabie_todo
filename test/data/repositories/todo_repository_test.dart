@@ -13,14 +13,14 @@ import '../repositories/todo_repository_test.mocks.dart';
 
 
 
-@GenerateMocks([BaseLocalDataSource])
+@GenerateMocks([TodoLocalDataSourceImpl])
 void main(){
-  BaseLocalDataSource mockTodoLocalDataSource = MockBaseLocalDataSource();
+  TodoLocalDataSourceImpl mockTodoLocalDataSource = MockTodoLocalDataSourceImpl();
   TodoRepositoryImpl todoRepositoryImpl = TodoRepositoryImpl(mockTodoLocalDataSource);
 
   //Before each test
   setUp(() {
-    mockTodoLocalDataSource = MockBaseLocalDataSource();
+    mockTodoLocalDataSource = MockTodoLocalDataSourceImpl();
     todoRepositoryImpl = TodoRepositoryImpl(mockTodoLocalDataSource);
   });
 

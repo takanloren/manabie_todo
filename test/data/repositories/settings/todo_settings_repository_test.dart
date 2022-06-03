@@ -2,23 +2,24 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:manabie_todo/common/datasources/local/base_local_datasource.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
 import 'package:manabie_todo/common/extensions/extensions.dart';
+import 'package:manabie_todo/todo_app/data/datasources/local/todo_settings_local_datasource.dart';
 import 'package:manabie_todo/todo_app/data/repositories/settings/todo_settings_repository_impl.dart';
 import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../domain/usecases/todo_entities_data.dart';
-import '../todo_repository_test.mocks.dart';
+import 'todo_settings_repository_test.mocks.dart';
 
 
-@GenerateMocks([BaseLocalDataSource])
+@GenerateMocks([TodoSettingsLocalDataSourceImpl])
 void main(){
-  BaseLocalDataSource mockBaseDS = MockBaseLocalDataSource();
+  TodoSettingsLocalDataSourceImpl mockBaseDS = MockTodoSettingsLocalDataSourceImpl();
   TodoSettingsRepositoryImpl todoSettingsRepositoryImpl = TodoSettingsRepositoryImpl(mockBaseDS);
 
   //Before each test
   setUp(() {
-    mockBaseDS = MockBaseLocalDataSource();
+    mockBaseDS = MockTodoSettingsLocalDataSourceImpl();
     todoSettingsRepositoryImpl = TodoSettingsRepositoryImpl(mockBaseDS);
   });
 

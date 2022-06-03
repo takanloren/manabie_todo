@@ -24,6 +24,11 @@ class TodoLocalDataSourceImpl extends BaseLocalDataSource<TodoModel>{
   }
 
   @override
+  Future<void> putAt(int index, TodoModel value) async {
+    await box.putAt(index, value);
+  }
+
+  @override
   Future<void> putAll(Map<String, TodoModel> items) async {
     await box.putAll(items);
   }

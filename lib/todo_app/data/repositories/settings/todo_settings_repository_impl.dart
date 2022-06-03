@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
+import 'package:manabie_todo/todo_app/data/datasources/local/todo_settings_local_datasource.dart';
 import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
 import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.dart';
 import 'package:manabie_todo/todo_app/domain/repositories/settings/todo_settings_repository.dart';
@@ -8,7 +9,7 @@ import '../../../../common/datasources/local/base_local_datasource.dart';
 
 class TodoSettingsRepositoryImpl extends TodoSettingsRepository{
 
-  final BaseLocalDataSource todoLocalDataSource;
+  final TodoSettingsLocalDataSourceImpl todoLocalDataSource;
 
   TodoSettingsRepositoryImpl(this.todoLocalDataSource);
 
@@ -30,7 +31,7 @@ class TodoSettingsRepositoryImpl extends TodoSettingsRepository{
   @override
   Future<Either<Failure, bool>> updateSettings(SettingsEntity settingsEntity) async {
     try{
-      settingsEntity.save();
+      await todoLocalDataSource.putAt(0, settingsEntity);
       return const Right(true);
     }
     catch(ex){

@@ -7,6 +7,8 @@ abstract class BaseLocalDataSource<ModelType>{
 
   Future<void> putAll(Map<String, ModelType> items);
 
+  Future<void> putAt(int index, ModelType value);
+
   Future<void> delete(String key);
 
   Future<void> deleteAll();

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
+import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
 import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
 import 'package:manabie_todo/todo_app/domain/repositories/todo_repository.dart';
 
@@ -7,7 +8,7 @@ import '../../../common/datasources/local/base_local_datasource.dart';
 
 class TodoRepositoryImpl extends TodoRepository{
 
-  final BaseLocalDataSource todoLocalDataSource;
+  final TodoLocalDataSourceImpl todoLocalDataSource;
 
   TodoRepositoryImpl(this.todoLocalDataSource);
 
@@ -26,7 +27,7 @@ class TodoRepositoryImpl extends TodoRepository{
   Future<Either<Failure, List<TodoModel>>> getAllTasks() async {
     try{
       final result = await todoLocalDataSource.getAll();
-      return Right(result as List<TodoModel>);
+      return Right(result);
     }
     catch(ex){
       return Left(DataSourceFailure('get all task failed - $ex'));
@@ -38,7 +39,7 @@ class TodoRepositoryImpl extends TodoRepository{
     try{
       final getAll = await todoLocalDataSource.getAll();
       var result = getAll.where((todo) => todo.completed).toList();
-      return Right(result as List<TodoModel>);
+      return Right(result);
     }
     catch(ex){
       return Left(DataSourceFailure('get completed task failed - $ex'));
@@ -50,7 +51,7 @@ class TodoRepositoryImpl extends TodoRepository{
     try{
       final getAll = await todoLocalDataSource.getAll();
       var result = getAll.where((todo) => !todo.completed).toList();
-      return Right(result as List<TodoModel>);
+      return Right(result);
     }
     catch(ex){
       return Left(DataSourceFailure('get incompleted task failed - $ex'));
@@ -77,7 +78,14 @@ class TodoRepositoryImpl extends TodoRepository{
   @override
   Future<Either<Failure, bool>> updateTask(TodoModel todoModel) async {
     try{
-      await todoModel.save();
+
+      final getAll = await todoLocalDataSource.getAll();
+
+      if (getAll.any((v) => v.id == todoModel.id)) {
+        final targetIndex = getAll.indexWhere((v) => v.id == todoModel.id);
+        await todoLocalDataSource.putAt(targetIndex, todoModel);
+      }
+
       return const Right(true);
     }
     catch(ex){
