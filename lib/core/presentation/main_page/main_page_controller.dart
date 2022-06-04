@@ -8,11 +8,13 @@ import 'package:manabie_todo/todo_app/presentation/all_task_page/pages/all_task_
 import 'package:manabie_todo/todo_app/presentation/complete_task_page/controllers/completed_task_controller.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
+import '../../../common/languages/localization_service.dart';
 import '../../../common/util/enums.dart';
 import '../../../todo_app/domain/usecases/todo_usecases.dart';
 import '../../../todo_app/presentation/complete_task_page/pages/completed_task_page.dart';
-import '../../../todo_app/presentation/incomplete_task_page/controllers/completed_task_controller.dart';
-import '../../../todo_app/presentation/incomplete_task_page/pages/completed_task_page.dart';
+import '../../../todo_app/presentation/incomplete_task_page/controllers/incompleted_task_controller.dart';
+import '../../../todo_app/presentation/incomplete_task_page/pages/incompleted_task_page.dart';
+import '../../../todo_app/presentation/settings_page/controllers/settings_controller.dart';
 import '../../../todo_app/presentation/settings_page/pages/settings_page.dart';
 
 class MainPageController extends GetxController {
@@ -22,6 +24,7 @@ class MainPageController extends GetxController {
   final allTaskController = Get.find<AllTaskController>();
   final completedTaskController = Get.find<CompletedTaskController>();
   final incompletedTaskController = Get.find<InCompletedTaskController>();
+  final settingsController = Get.find<SettingsController>();
   int currentTabIndex = 0;
 
   List<Widget> buildScreens() {

@@ -42,7 +42,7 @@ class CompletedTaskPage extends GetView<CompletedTaskController> {
           ),
           Expanded(
               child: Container(
-                padding: EdgeInsets.all(10.sp),
+                padding: EdgeInsets.all(5.sp),
                 child: Obx(() => ListView.builder(
                     itemBuilder: (context, index) {
                       var todo = _controller.allTasks[index];
@@ -83,7 +83,7 @@ class CompletedTaskPage extends GetView<CompletedTaskController> {
                               ),
                               header: Container(
                                 padding: EdgeInsets.only(left: 5.sp),
-                                height: 7.h,
+                                height: 5.h,
                                 child: Row(
                                   children: [
                                     todo.completed ? const Icon(CupertinoIcons.check_mark_circled) : const Icon(Icons.error_outline),
@@ -113,12 +113,11 @@ class CompletedTaskPage extends GetView<CompletedTaskController> {
                                 ),
                               ),
                               collapsed: Container(
-                                padding: EdgeInsets.only(bottom: 2.sp),
-                                child: Center(child: Icon(Icons.arrow_drop_down, size: 15.sp),),
+                                child: Center(child: Icon(Icons.arrow_drop_down, size: 10.sp),),
                               ),
                               expanded: Container(
                                 padding: EdgeInsets.only(bottom: 8.sp, left: 8.sp, right: 8.sp),
-                                child: Text(todo.description, softWrap: true, ),
+                                child: Text(todo.description, softWrap: true, maxLines: 5,),
                               ),
                             )
                         ),

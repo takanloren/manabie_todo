@@ -9,5 +9,8 @@ const Map<String, String> vi = {
   'total': 'Tổng cộng',
   'title': 'Tiêu đề',
   'description': 'Mô tả',
-  'add_todo_error_title_empty': 'Tiêu đề không thế để trống!'
+  'add_todo_error_title_empty': 'Tiêu đề không thể để trống!',
+  'language': 'Ngôn ngữ',
+  'light_mode': 'Chế độ sáng',
+  'dark_mode': 'Chế độ tối',
 };

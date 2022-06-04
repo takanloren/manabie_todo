@@ -8,4 +8,4 @@ TodoEntity todoEntity4 = TodoEntity("4", "4","TodoTitleTest4", false);
 TodoEntity todoEntity5 = TodoEntity("5", "5","TodoTitleTest5", false);
 
 
-SettingsEntity settingsEntity = SettingsEntity(false, 'en-us');
+SettingsEntity settingsEntity = SettingsEntity(false, 'en');

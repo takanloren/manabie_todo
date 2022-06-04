@@ -4,7 +4,7 @@ import 'package:manabie_todo/todo_app/presentation/all_task_page/controllers/all
 import 'package:manabie_todo/todo_app/presentation/settings_page/controllers/settings_controller.dart';
 
 import '../../../todo_app/presentation/complete_task_page/controllers/completed_task_controller.dart';
-import '../../../todo_app/presentation/incomplete_task_page/controllers/completed_task_controller.dart';
+import '../../../todo_app/presentation/incomplete_task_page/controllers/incompleted_task_controller.dart';
 
 class MainPageBindings extends Bindings {
   @override

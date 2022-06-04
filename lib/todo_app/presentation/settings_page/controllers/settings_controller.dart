@@ -7,16 +7,21 @@ import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.d
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
 import 'package:manabie_todo/todo_app/domain/usecases/todo_usecases.dart';
 
+import '../../../../common/languages/localization_service.dart';
 import '../../../domain/usecases/settings/todo_settings_usecases.dart';
 
 class SettingsController extends GetxController {
   final settingsUsecase = GetIt.I.get<TodoSettingsUsecase>();
   var isLoading = false.obs;
-  Rx<SettingsEntity> currentSettings = SettingsEntity(false, "").obs;
+  Rx<SettingsEntity> currentSettings = SettingsEntity(false, 'en').obs;
+  var currentLangCode = ''.obs;
+
 
   @override
   void onInit() async {
-    fetchData();
+    await fetchData();
+    print('onInit Setting Controller- ${currentSettings.value.selectedLanguage}');
+    LocalizationService.changeLocale(currentSettings.value.selectedLanguage);
   }
 
   @override
@@ -28,6 +33,7 @@ class SettingsController extends GetxController {
     final result = await settingsUsecase.getSettings();
     if(result.isRight()){
       currentSettings = result.asRight().obs;
+      currentLangCode.value = currentSettings.value.selectedLanguage;
     }
   }
 
@@ -43,5 +49,13 @@ class SettingsController extends GetxController {
     }
 
     settingsUsecase.updateSettings(currentSettings.value);
+  }
+
+  void onLanguageSelected(String? value) {
+    currentSettings.value.selectedLanguage = value!;
+    settingsUsecase.updateSettings(currentSettings.value);
+
+    currentLangCode.value = value;
+    LocalizationService.changeLocale(value);
   }
 }

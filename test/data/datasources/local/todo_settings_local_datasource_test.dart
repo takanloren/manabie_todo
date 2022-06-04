@@ -22,12 +22,12 @@ void main() async {
   });
 
   test('Add default settings to local storage', () {
-    todoSettingsLocalDataSourceImpl.add(TodoSettingsModel(false, "en-us"));
+    todoSettingsLocalDataSourceImpl.add(TodoSettingsModel(false, "en"));
     expect(box.values.length, 1);
   });
 
   test('Update todo task 1', () {
-    TodoSettingsModel todoSettingsModel = TodoSettingsModel(false, "en-us");
+    TodoSettingsModel todoSettingsModel = TodoSettingsModel(false, "en");
 
     todoSettingsLocalDataSourceImpl.add(todoSettingsModel);
     expect(box.values.length, 1);

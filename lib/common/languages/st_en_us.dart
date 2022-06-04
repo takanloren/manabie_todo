@@ -9,5 +9,8 @@ const Map<String, String> en = {
   'total': 'Total',
   'title': 'Title',
   'description': 'Description',
-  'add_todo_error_title_empty': 'Title cannot be empty!'
+  'add_todo_error_title_empty': 'Title cannot be empty!',
+  'language': 'Language',
+  'light_mode': 'Light Mode',
+  'dark_mode': 'Dark Mode',
 };

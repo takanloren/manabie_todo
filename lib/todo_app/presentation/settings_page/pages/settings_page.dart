@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import '../../../../common/languages/localization_service.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsPage extends GetView<SettingsController> {
@@ -28,16 +29,44 @@ class SettingsPage extends GetView<SettingsController> {
             inactiveBgColor: Colors.grey,
             inactiveFgColor: Colors.white,
             totalSwitches: 2,
-            labels: ['Light Mode', 'Dark Mode'],
-            icons: [Icons.light_mode, Icons.dark_mode],
-            activeBgColors: [[Colors.blue],[Colors.blue]],
+            labels: ['light_mode'.tr, 'dark_mode'.tr],
+            icons: const [Icons.light_mode, Icons.dark_mode],
+            activeBgColors: const [[Colors.blue],[Colors.blue]],
             onToggle: (index) {
               _controller.onThemeModeToggled(index!);
             },
-          ))
-          ,
+          )),
+          SizedBox(height: 5.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('language'.tr),
+              SizedBox(width: 5.w,),
+              Center(
+                child: Obx(() => DropdownButton<String>(
+                  icon: const Icon(Icons.arrow_drop_down),
+                  value: _controller.currentLangCode?.value,
+                  items: _buildDropdownMenuItems(),
+                  onChanged: (value) {
+                    _controller.onLanguageSelected(value);
+                  },
+                )),
+              )
+            ],
+          )
         ],
       ),
     );
+  }
+
+  List<DropdownMenuItem<String>> _buildDropdownMenuItems() {
+    var list = <DropdownMenuItem<String>>[];
+    LocalizationService.langs.forEach((key, value) {
+      list.add(DropdownMenuItem<String>(
+        value: key,
+        child: Text(value),
+      ));
+    });
+    return list;
   }
 }

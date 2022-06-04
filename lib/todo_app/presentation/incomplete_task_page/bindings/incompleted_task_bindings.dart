@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/completed_task_controller.dart';
+import '../controllers/incompleted_task_controller.dart';
 
 class InCompletedTaskBindings extends Bindings {
   @override

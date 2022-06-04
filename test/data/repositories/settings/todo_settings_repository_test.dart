@@ -48,7 +48,7 @@ void main(){
     });
 
     test('Should update the settings', () async {
-      SettingsEntity settingsEntityTemp = SettingsEntity(false, 'en-us');
+      SettingsEntity settingsEntityTemp = SettingsEntity(false, 'en');
       settingsEntityTemp.isDarkTheme = true;
       //then
       final either = await todoSettingsRepositoryImpl.updateSettings(settingsEntityTemp);

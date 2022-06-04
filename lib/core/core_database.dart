@@ -3,6 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:manabie_todo/common/themes/theme_service.dart';
 import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
 
+import '../common/languages/localization_service.dart';
 import '../common/util/constants.dart';
 import '../todo_app/data/model/todo_model.dart';
 
@@ -17,15 +18,15 @@ class CoreDatabase{
 
     //Check and init default settings
     if(settingBox.values.isEmpty){
-      TodoSettingsModel defaultSettings = TodoSettingsModel(false, 'en-us');
+      TodoSettingsModel defaultSettings = TodoSettingsModel(false, 'en');
       settingBox.add(defaultSettings);
+
+      //Generate default task - only on first time run app
+      for(int i = 1; i <= 6; i++){
+        todoBox.add(TodoModel(i.toString(), 'Todo task number $i', 'This is the description for the todo $i', i % 2 == 0 ? true : false));
+      }
     }
 
     ThemeService.themeMode = settingBox.values.first.isDarkTheme ? ThemeMode.dark : ThemeMode.light;
-
-    /*await todoBox.clear();
-    for(int i = 0; i < 10; i++){
-      todoBox.add(TodoModel(i.toString(), 'Todo task number $i', 'description $i description description description description description description description', i % 2 == 0 ? true : false));
-    }*/
   }
 }

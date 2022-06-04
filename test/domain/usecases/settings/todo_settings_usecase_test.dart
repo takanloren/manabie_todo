@@ -42,7 +42,7 @@ void main() async {
   });
 
   test('Should update the settings', () async {
-    SettingsEntity settingsEntityTemp = SettingsEntity(false, 'en-us');
+    SettingsEntity settingsEntityTemp = SettingsEntity(false, 'en');
 
     when(mockTodoSettingsRepo.getSettings())
         .thenAnswer((_) async => Right(settingsEntityTemp));
@@ -73,6 +73,7 @@ void main() async {
       final Failure error = either.asLeft();
       expect(error, isA<DataSourceFailure>());
     }else{
+      final either = await todoSettingsUsecase.getSettings();
       final settings = either.asRight();
       expect(settings.isDarkTheme, settingsEntityTemp.isDarkTheme);
       expect(settings.selectedLanguage, settingsEntityTemp.selectedLanguage);

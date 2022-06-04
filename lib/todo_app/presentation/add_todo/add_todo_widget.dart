@@ -14,10 +14,12 @@ class AddTodoDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return AlertDialog(
       title: Text('add'.tr),
       content: SizedBox(
-        height: 30.h,
+        height: 29.h,
+        width: 100.w,
         child: Column(
           children: [
             CustomTextFormField(
@@ -45,7 +47,7 @@ class AddTodoDialog extends StatelessWidget {
               height: 1,
             ),
             SizedBox(
-              height: 7.h,
+              height: 8.h,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -53,7 +55,7 @@ class AddTodoDialog extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       onSurface: Colors.white,
                       primary: const Color(0xff455A64),
-                      onPrimary: Colors.lightBlue,
+                      onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10), // <-- Radius
                       ),
@@ -72,7 +74,7 @@ class AddTodoDialog extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       onSurface: Colors.white,
                       primary: const Color(0xff455A64),
-                      onPrimary: Colors.lightBlue,
+                      onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10), // <-- Radius
                       ),
