@@ -45,7 +45,7 @@ class SettingsPage extends GetView<SettingsController> {
               Center(
                 child: Obx(() => DropdownButton<String>(
                   icon: const Icon(Icons.arrow_drop_down),
-                  value: _controller.currentLangCode?.value,
+                  value: _controller.currentLangCode.value,
                   items: _buildDropdownMenuItems(),
                   onChanged: (value) {
                     _controller.onLanguageSelected(value);
