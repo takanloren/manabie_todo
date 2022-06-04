@@ -11,8 +11,13 @@ class TodoSettingsUsecase{
 
   TodoSettingsUsecase({required this.todoSettingsRepository});
 
-  Future<Either<Failure, TodoSettingsModel>> getSettings() async {
-    return await todoSettingsRepository.getSettings();
+  Future<Either<Failure, SettingsEntity>> getSettings() async {
+    final result = await todoSettingsRepository.getSettings();
+    if(result.isLeft()){
+      return Left(result.asLeft());
+    }else{
+      return Right(SettingsEntity(result.asRight().isDarkTheme, result.asRight().selectedLanguage));
+    }
   }
 
   Future<Either<Failure, bool>> updateSettings(SettingsEntity settingsEntity) async {

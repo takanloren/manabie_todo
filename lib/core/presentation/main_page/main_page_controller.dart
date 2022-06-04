@@ -13,6 +13,7 @@ import '../../../todo_app/domain/usecases/todo_usecases.dart';
 import '../../../todo_app/presentation/complete_task_page/pages/completed_task_page.dart';
 import '../../../todo_app/presentation/incomplete_task_page/controllers/completed_task_controller.dart';
 import '../../../todo_app/presentation/incomplete_task_page/pages/completed_task_page.dart';
+import '../../../todo_app/presentation/settings_page/pages/settings_page.dart';
 
 class MainPageController extends GetxController {
 
@@ -28,11 +29,7 @@ class MainPageController extends GetxController {
       AllTaskPage(),
       CompletedTaskPage(),
       InCompletedTaskPage(),
-      Container(
-        child: Center(
-          child: Text('Settings Screen'),
-        ),
-      ),
+      SettingsPage()
     ];
   }
 

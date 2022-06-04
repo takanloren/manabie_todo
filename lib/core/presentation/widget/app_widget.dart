@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import '../../../common/languages/localization_service.dart';
 import '../../../common/themes/dark_theme.dart';
 import '../../../common/themes/light_theme.dart';
+import '../../../common/themes/theme_service.dart';
 import '../../routes/app_pages.dart';
 import '../../routes/app_routes.dart';
 
@@ -47,6 +48,7 @@ class _AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
       child: Sizer(
           builder: (context, orientation, deviceType) {
@@ -54,6 +56,7 @@ class _AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
               title: 'Todo app - Manabie Assignment - Hà Minh Tùng',
               theme: LightTheme.data,
               darkTheme: DarkTheme.data,
+              themeMode: ThemeService.themeMode,
               locale: LocalizationService.locale,
               fallbackLocale: LocalizationService.fallbackLocale,
               translations: LocalizationService(),

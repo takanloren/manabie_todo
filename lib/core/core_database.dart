@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:manabie_todo/common/themes/theme_service.dart';
 import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
 
 import '../common/util/constants.dart';
@@ -18,6 +20,8 @@ class CoreDatabase{
       TodoSettingsModel defaultSettings = TodoSettingsModel(false, 'en-us');
       settingBox.add(defaultSettings);
     }
+
+    ThemeService.themeMode = settingBox.values.first.isDarkTheme ? ThemeMode.dark : ThemeMode.light;
 
     /*await todoBox.clear();
     for(int i = 0; i < 10; i++){
