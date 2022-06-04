@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
@@ -72,7 +73,7 @@ class MainPageController extends GetxController {
 
   @override
   void onInit() {
-
+    FlutterNativeSplash.remove();
   }
 
   @override

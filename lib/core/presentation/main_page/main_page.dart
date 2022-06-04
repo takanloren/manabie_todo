@@ -21,10 +21,11 @@ class MainPage extends GetView<MainPageController> {
       child: Column(
         children: [
           Container(
-            height: 5.h,
+            height: 4.h,
             child: AppBar(
-              title: Text('Manabie Assignment - Hà Minh Tùng'),
-              backgroundColor: Colors.blueGrey,
+              foregroundColor: Colors.white,
+              title: Text('Todo App - Manabie Assignment - Dev: Hà Minh Tùng', style: TextStyle(fontSize: 10.sp),),
+              backgroundColor: Color(0xFF395ad2),
             ),
           ),
           Expanded(
