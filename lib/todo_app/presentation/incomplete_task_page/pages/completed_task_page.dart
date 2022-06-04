@@ -3,15 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:sizer/sizer.dart';
 
 import '../controllers/completed_task_controller.dart';
 
-class CompletedTaskPage extends GetView<CompletedTaskController> {
-  CompletedTaskPage({Key? key}) : super(key: key);
+class InCompletedTaskPage extends GetView<InCompletedTaskController> {
+  InCompletedTaskPage({Key? key}) : super(key: key);
 
-  final _controller = Get.find<CompletedTaskController>();
+  final _controller = Get.find<InCompletedTaskController>();
 
   @override
   Widget build(BuildContext context) {

@@ -50,6 +50,7 @@ class MainPage extends GetView<MainPageController> {
 
           if(result is TodoEntity){
             print(result.toString());
+            _mainPageController.addNewTodo(result as TodoEntity);
           }else{
 
           }

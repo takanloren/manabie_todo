@@ -6,5 +6,6 @@ class LightTheme{
     backgroundColor: const Color(0xFFE5E5E5),
     dividerColor: Colors.white54,
     colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey).copyWith(secondary: Colors.black, brightness: Brightness.light),
+
   );
 }

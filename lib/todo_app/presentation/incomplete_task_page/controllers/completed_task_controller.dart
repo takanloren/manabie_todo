@@ -5,7 +5,7 @@ import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
 import 'package:manabie_todo/todo_app/domain/usecases/todo_usecases.dart';
 
-class AllTaskController extends GetxController {
+class InCompletedTaskController extends GetxController {
   final todoUsecase = GetIt.I.get<TodoUsecase>();
   var totalCount = 0.obs;
   var allTasks = <TodoEntity>[].obs;
@@ -26,13 +26,13 @@ class AllTaskController extends GetxController {
       entity.completed = completed;
       await todoUsecase.updateTask(entity);
 
-      allTasks.refresh();
+      fetchData();
     }
   }
 
   Future fetchData() async {
     allTasks.clear();
-    final result = await todoUsecase.getAllTasks();
+    final result = await todoUsecase.getIncompleteTasks();
     if(result.isRight()){
       allTasks.addAll(result.asRight());
     }

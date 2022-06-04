@@ -40,4 +40,14 @@ class CompletedTaskController extends GetxController {
     totalCount.value = allTasks.length;
     allTasks.refresh();
   }
+
+  Future<void> onPressedDelete(TodoEntity todoEntity) async {
+    final result = await todoUsecase.removeTask(todoEntity);
+    if(result.isRight()){
+      allTasks.remove(todoEntity);
+    }
+
+    totalCount.value = allTasks.length;
+    allTasks.refresh();
+  }
 }
