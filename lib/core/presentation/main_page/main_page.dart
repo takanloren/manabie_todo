@@ -24,12 +24,16 @@ class MainPage extends GetView<MainPageController> {
             height: 4.h,
             child: AppBar(
               foregroundColor: Colors.white,
-              title: Text('Todo App - Manabie Assignment - Dev: Hà Minh Tùng', style: TextStyle(fontSize: 10.sp),),
+              title: Text(
+                'Todo App - Manabie Assignment - Dev: Hà Minh Tùng',
+                style: TextStyle(fontSize: 10.sp),
+              ),
               backgroundColor: Color(0xFF395ad2),
             ),
           ),
           Expanded(
               child: PersistentTabView(
+            key: const Key('bottom_nav_bar'),
             context,
             controller: _mainPageController.mainTabController,
             screens: _mainPageController.buildScreens(),

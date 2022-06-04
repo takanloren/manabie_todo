@@ -64,7 +64,7 @@ void main() async {
     }
 
     settingsEntityTemp.isDarkTheme = true;
-    settingsEntityTemp.selectedLanguage = 'vn';
+    settingsEntityTemp.selectedLanguage = 'en';
 
     //then
     final either2 = await todoSettingsUsecase.updateSettings(settingsEntityTemp);

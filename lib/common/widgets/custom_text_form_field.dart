@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
   final InputDecoration? inputDecoration;
   final TextStyle? style;
   final int maxLines;
+  final Key? key;
 
   CustomTextFormField(
       {required this.onTextChanged,
@@ -30,13 +31,15 @@ class CustomTextFormField extends StatelessWidget {
         this.style,
         this.isEnabled = true,
         this.inputDecoration,
-        this.maxLines = 1});
+        this.maxLines = 1,
+        this.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return TextFormField(
+      key: key,
       maxLines: maxLines,
       controller: controller,
       obscureText: isPasswordField,

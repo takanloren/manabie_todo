@@ -33,10 +33,10 @@ void main() async {
     expect(box.values.length, 1);
 
     todoSettingsModel.isDarkTheme = true;
-    todoSettingsModel.selectedLanguage = 'vn';
+    todoSettingsModel.selectedLanguage = 'en';
     todoSettingsModel.save();
 
     expect(box.values.first.isDarkTheme, true);
-    expect(box.values.first.selectedLanguage, 'vn');
+    expect(box.values.first.selectedLanguage, 'en');
   });
 }

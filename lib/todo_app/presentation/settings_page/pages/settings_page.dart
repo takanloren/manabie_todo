@@ -17,6 +17,8 @@ class SettingsPage extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    print('Render setiings page _controller.currentLangCode.value: ${_controller.currentLangCode.value}');
+    print('Render setiings page _buildDropdownMenuItems: $_buildDropdownMenuItems()');
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

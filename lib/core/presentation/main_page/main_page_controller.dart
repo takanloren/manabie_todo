@@ -8,6 +8,7 @@ import 'package:manabie_todo/todo_app/presentation/all_task_page/controllers/all
 import 'package:manabie_todo/todo_app/presentation/all_task_page/pages/all_task_page.dart';
 import 'package:manabie_todo/todo_app/presentation/complete_task_page/controllers/completed_task_controller.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'dart:io' show Platform;
 
 import '../../../common/languages/localization_service.dart';
 import '../../../common/util/enums.dart';
@@ -40,25 +41,25 @@ class MainPageController extends GetxController {
   List<PersistentBottomNavBarItem> navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const Icon(Icons.home, key: Key('bottom_nav_all')),
         title: ('all'.tr),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.check_mark_circled),
+        icon: const Icon(CupertinoIcons.check_mark_circled, key: Key('bottom_nav_completed')),
         title: ('completed'.tr),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.error_outline),
+        icon: const Icon(Icons.error_outline, key: Key('bottom_nav_incomplete')),
         title: ('incomplete'.tr),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.settings),
+        icon: const Icon(Icons.settings, key: Key('bottom_nav_settings')),
         title: ('settings'.tr),
         activeColorPrimary: CupertinoColors.activeBlue,
         inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -73,7 +74,9 @@ class MainPageController extends GetxController {
 
   @override
   void onInit() {
-    FlutterNativeSplash.remove();
+    /*if (!Platform.environment.containsKey('FLUTTER_TEST')){
+      FlutterNativeSplash.remove();
+    }*/
   }
 
   @override

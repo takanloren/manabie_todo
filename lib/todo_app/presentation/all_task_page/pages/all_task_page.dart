@@ -69,6 +69,7 @@ class AllTaskPage extends GetView<AllTaskController> {
                                   autoClose: true,
                                   icon: Icons.delete,
                                   label: 'delete'.tr,
+                                  key: const Key('delete_todo_button'),
                                 ),
                               ],
                             ),

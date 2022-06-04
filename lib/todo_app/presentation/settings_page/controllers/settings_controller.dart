@@ -6,6 +6,7 @@ import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.dart';
 import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
 import 'package:manabie_todo/todo_app/domain/usecases/todo_usecases.dart';
+import 'dart:io' show Platform;
 
 import '../../../../common/languages/localization_service.dart';
 import '../../../domain/usecases/settings/todo_settings_usecases.dart';
@@ -14,14 +15,18 @@ class SettingsController extends GetxController {
   final settingsUsecase = GetIt.I.get<TodoSettingsUsecase>();
   var isLoading = false.obs;
   Rx<SettingsEntity> currentSettings = SettingsEntity(false, 'en').obs;
-  var currentLangCode = ''.obs;
+  var currentLangCode = 'en'.obs;
 
 
   @override
   void onInit() async {
     await fetchData();
     print('onInit Setting Controller- ${currentSettings.value.selectedLanguage}');
-    LocalizationService.changeLocale(currentSettings.value.selectedLanguage);
+
+    if (!Platform.environment.containsKey('FLUTTER_TEST')){
+      print('LocalizationService.changeLocale in SettingsController');
+      LocalizationService.changeLocale(currentSettings.value.selectedLanguage);
+    }
   }
 
   @override

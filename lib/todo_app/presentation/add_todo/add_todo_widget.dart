@@ -23,6 +23,7 @@ class AddTodoDialog extends StatelessWidget {
         child: Column(
           children: [
             CustomTextFormField(
+              key: const Key('add_todo_title'),
               onTextChanged: (value){
                 todoEntity.title = value;
               },
@@ -33,6 +34,7 @@ class AddTodoDialog extends StatelessWidget {
               height: 3.h,
             ),
             CustomTextFormField(
+              key: const Key('cancel_todo_title'),
               onTextChanged: (value){
                 todoEntity.description = value;
               },
@@ -67,6 +69,7 @@ class AddTodoDialog extends StatelessWidget {
                         Get.back(result: todoEntity);
                       }
                     },
+                    key: const Key('add_todo_btn'),
                     child: Text('add'.tr),
                   ),
                   SizedBox(width: 12.w,),
@@ -82,6 +85,7 @@ class AddTodoDialog extends StatelessWidget {
                     onPressed: (){
                       Get.back(result: false);
                     },
+                    key: const Key('cancel_todo_btn'),
                     child: Text('cancel'.tr),
                   ),
                 ],

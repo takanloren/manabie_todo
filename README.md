@@ -2,6 +2,9 @@
 
 The only purpose for this project is Manabie assignment for Mobile Engineer.
 
+- Developed by Hà Minh Tùng.
+- Email: tung.haminh1995@gmail.com
+
 ## Development environment:
 
 - Flutter 3.0.1 - channel stable
@@ -59,14 +62,21 @@ flutter pub run build_runner build --delete-conflicting-outputs
 flutter build apk -t lib/main.dart
 ```
 
-```sh
-flutter run apk -t lib/main.dart
-```
-## Test
+## Testing
 
+#### Unit Test and Widgets Test
 ```sh
 flutter test .\test
+```
+#### Integration Test
+```sh
+flutter test .\integration_test\add_invalid_todo_test.dart
+flutter test .\integration_test\add_valid_todo_test.dart
+flutter test .\integration_test\delete_todo_test.dart
+flutter test .\integration_test\nav_to_settings_test.dart
+flutter test .\integration_test\open_add_dialog_test.dart
 ```
 
 ## Note
 - By default, the first time you run the application, it will automatically have six tasks added. This is done by purpose.
+- A release apk already built and placed in \manabie_todo\release_apk\TodoApp_ManabieAssignment_HaMinhTung.apk
