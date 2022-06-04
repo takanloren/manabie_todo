@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
 import 'package:manabie_todo/todo_app/presentation/add_todo/add_todo_widget.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../todo_app/presentation/all_task_page/pages/all_task_page.dart';
+import '../../../todo_app/presentation/complete_task_page/pages/completed_task_page.dart';
+import '../../../todo_app/presentation/incomplete_task_page/pages/incompleted_task_page.dart';
+import '../../../todo_app/presentation/settings_page/pages/settings_page.dart';
 import 'main_page_controller.dart';
 
 class MainPage extends GetView<MainPageController> {
@@ -16,11 +20,11 @@ class MainPage extends GetView<MainPageController> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
+    return SizedBox(
       height: 100.h,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 4.h,
             child: AppBar(
               foregroundColor: Colors.white,
@@ -28,7 +32,7 @@ class MainPage extends GetView<MainPageController> {
                 'Todo App - Manabie Assignment - Dev: Hà Minh Tùng',
                 style: TextStyle(fontSize: 10.sp),
               ),
-              backgroundColor: Color(0xFF395ad2),
+              backgroundColor: const Color(0xFF395ad2),
             ),
           ),
           Expanded(
@@ -36,8 +40,8 @@ class MainPage extends GetView<MainPageController> {
             key: const Key('bottom_nav_bar'),
             context,
             controller: _mainPageController.mainTabController,
-            screens: _mainPageController.buildScreens(),
-            items: _mainPageController.navBarsItems(),
+            screens: buildScreens(),
+            items: navBarsItems(),
             onItemSelected: (index) {
               _mainPageController.onTabViewChanged(index);
             },
@@ -72,8 +76,7 @@ class MainPage extends GetView<MainPageController> {
                 final result = await Get.dialog(AddTodoDialog());
 
                 if (result is TodoEntity) {
-                  print(result.toString());
-                  _mainPageController.addNewTodo(result as TodoEntity);
+                  _mainPageController.addNewTodo(result);
                 } else {}
               },
               child: const Icon(Icons.add),
@@ -82,5 +85,43 @@ class MainPage extends GetView<MainPageController> {
         ],
       ),
     );
+  }
+
+  List<Widget> buildScreens() {
+    return [
+      AllTaskPage(),
+      CompletedTaskPage(),
+      InCompletedTaskPage(),
+      SettingsPage()
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.home, key: Key('bottom_nav_all')),
+        title: ('all'.tr),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(CupertinoIcons.check_mark_circled, key: Key('bottom_nav_completed')),
+        title: ('completed'.tr),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.error_outline, key: Key('bottom_nav_incomplete')),
+        title: ('incomplete'.tr),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.settings, key: Key('bottom_nav_settings')),
+        title: ('settings'.tr),
+        activeColorPrimary: CupertinoColors.activeBlue,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+    ];
   }
 }

@@ -3,8 +3,8 @@ import 'package:manabie_todo/common/datasources/local/base_local_datasource.dart
 import 'package:manabie_todo/common/errors/failures.dart';
 import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
-import 'package:manabie_todo/todo_app/data/repositories/todo_repository_impl.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
+import 'package:manabie_todo/todo_app/data/repositories/todo/todo_repository_impl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

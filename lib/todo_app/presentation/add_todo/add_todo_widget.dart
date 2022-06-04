@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:manabie_todo/common/widgets/custom_text_form_field.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
 import 'package:sizer/sizer.dart';
 import 'package:uuid/uuid.dart';
 

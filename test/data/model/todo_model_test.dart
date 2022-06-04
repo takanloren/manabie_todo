@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
 
 import 'todo_model_data.dart';
 

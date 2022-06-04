@@ -1,5 +1,5 @@
 import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
 
 TodoEntity todoEntity1 = TodoEntity("1", "1","TodoTitleTest1", false);
 TodoEntity todoEntity2 = TodoEntity("2", "2","TodoTitleTest2", true);

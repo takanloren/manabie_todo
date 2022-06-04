@@ -4,9 +4,9 @@ import 'package:manabie_todo/common/errors/failures.dart';
 import 'package:manabie_todo/common/extensions/extensions.dart';
 import 'package:manabie_todo/todo_app/domain/entities/settings/settings_entity.dart';
 import 'package:manabie_todo/todo_app/domain/repositories/settings/todo_settings_repository.dart';
-import 'package:manabie_todo/todo_app/domain/repositories/todo_repository.dart';
+import 'package:manabie_todo/todo_app/domain/repositories/todo/todo_repository.dart';
 import 'package:manabie_todo/todo_app/domain/usecases/settings/todo_settings_usecases.dart';
-import 'package:manabie_todo/todo_app/domain/usecases/todo_usecases.dart';
+import 'package:manabie_todo/todo_app/domain/usecases/todo/todo_usecases.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:manabie_todo/common/util/constants.dart';
 import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
 
 
 import '../../model/todo_model_data.dart';

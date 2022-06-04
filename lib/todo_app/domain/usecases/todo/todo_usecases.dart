@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:manabie_todo/common/extensions/extensions.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
 
-import '../../../common/errors/failures.dart';
-import '../../data/model/todo_model.dart';
-import '../repositories/todo_repository.dart';
+import '../../../../common/errors/failures.dart';
+import '../../../data/model/todo/todo_model.dart';
+import '../../repositories/todo/todo_repository.dart';
 
 class TodoUsecase{
   final TodoRepository todoRepository;

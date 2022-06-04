@@ -1,4 +1,4 @@
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
 
 TodoModel todoModel1 = TodoModel("1", "1","TodoTitleTest1", false);
 TodoModel todoModel2 = TodoModel("2", "2","TodoTitleTest2", true);

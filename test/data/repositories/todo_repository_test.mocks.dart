@@ -7,7 +7,7 @@ import 'dart:async' as _i5;
 import 'package:hive/hive.dart' as _i2;
 import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart'
     as _i3;
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart' as _i4;
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint

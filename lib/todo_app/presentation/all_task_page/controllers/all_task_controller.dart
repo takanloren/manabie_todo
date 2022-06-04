@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get_it/get_it.dart';
 import 'package:manabie_todo/common/extensions/extensions.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
-import 'package:manabie_todo/todo_app/domain/usecases/todo_usecases.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
+import 'package:manabie_todo/todo_app/domain/usecases/todo/todo_usecases.dart';
 
 class AllTaskController extends GetxController {
   final todoUsecase = GetIt.I.get<TodoUsecase>();

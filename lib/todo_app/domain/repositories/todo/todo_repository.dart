@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
-import 'package:manabie_todo/todo_app/domain/entities/todo_entity.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
+import 'package:manabie_todo/todo_app/domain/entities/todo/todo_entity.dart';
 
-import '../../../common/errors/failures.dart';
+import '../../../../common/errors/failures.dart';
 
 abstract class TodoRepository{
   Future<Either<Failure, List<TodoModel>>> getAllTasks();

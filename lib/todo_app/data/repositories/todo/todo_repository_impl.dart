@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:manabie_todo/common/errors/failures.dart';
 import 'package:manabie_todo/todo_app/data/datasources/local/todo_local_datasource.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
-import 'package:manabie_todo/todo_app/domain/repositories/todo_repository.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
+import 'package:manabie_todo/todo_app/domain/repositories/todo/todo_repository.dart';
 
-import '../../../common/datasources/local/base_local_datasource.dart';
+import '../../../../common/datasources/local/base_local_datasource.dart';
 
 class TodoRepositoryImpl extends TodoRepository{
 

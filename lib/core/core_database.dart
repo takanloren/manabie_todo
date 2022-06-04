@@ -3,9 +3,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:manabie_todo/common/themes/theme_service.dart';
 import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
 
-import '../common/languages/localization_service.dart';
 import '../common/util/constants.dart';
-import '../todo_app/data/model/todo_model.dart';
+import '../todo_app/data/model/todo/todo_model.dart';
 
 class CoreDatabase{
   static Future<void> init() async {

@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:manabie_todo/todo_app/data/model/settings/todo_settings_model.dart';
-import 'package:manabie_todo/todo_app/data/model/todo_model.dart';
+import 'package:manabie_todo/todo_app/data/model/todo/todo_model.dart';
 
 import '../../../../common/datasources/local/base_local_datasource.dart';
 
