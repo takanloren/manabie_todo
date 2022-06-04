@@ -18,6 +18,7 @@ Clean Architecture
 ![todo_manabie_data_flow](https://user-images.githubusercontent.com/23713997/171991144-461ca9fb-45ac-4fd9-b6af-9307c1b7db0d.png)
 
 
+
 ## Main Dependency Packages
 
 - GetX - https://pub.dev/packages/get
@@ -36,8 +37,25 @@ Clean Architecture
 - Widgets: expandable, persistent_bottom_nav_bar, flutter_slidable 
 
 ## Build project
-1.  run "flutter pub get" to get all dependencies
-2.  run "flutter pub run build_runner build --delete-conflicting-outputs" to generate resources.
-3.  run "flutter build apk -t lib/main.dart"
-4.  run "flutter run apk -t lib/main.dart"
+
+```sh
+flutter pub get
+```
+
+```sh
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+```sh
+flutter build apk -t lib/main.dart
+```
+
+```sh
+flutter run apk -t lib/main.dart
+```
+## Test
+
+```sh
+flutter test .\test
+```
 

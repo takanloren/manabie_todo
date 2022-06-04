@@ -4,10 +4,19 @@ The only purpose for this project is Manabie assignment for Mobile Engineer.
 
 ## Development environment:
 
-Flutter 3.0.1 • channel stable
-Framework • revision fb57da5f94
-Engine • revision caaafc5604
-Tools • Dart 2.17.1 • DevTools 2.12.2
+- Flutter 3.0.1 - channel stable
+- Framework - revision fb57da5f94
+- Engine - revision caaafc5604
+- Tools - Dart 2.17.1 
+- DevTools 2.12.2
+
+## Features
+- Add new todo task with FAB.
+- Switch between tab to view All/Completed/Incomplete/Settings screen.
+- When a task is completed, it will be marked with a Checked checkbox.
+- Tap on a Task to expand the view and see the Task's description.
+- Sweep the task to left to reach to the delete button of the task.
+- Multiple language and light/dark theme is supported.
 
 ## Project Architecture
 
@@ -59,3 +68,5 @@ flutter run apk -t lib/main.dart
 flutter test .\test
 ```
 
+## Note
+- By default, the first time you run the application, it will automatically have six tasks added. This is done by purpose.
