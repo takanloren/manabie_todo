@@ -1,6 +1,8 @@
 # Todo Application - Manabie assignment for Mobile Engineer.
 
-The only purpose of this project is Manabie assignment for Mobile Engineer.
+- The only purpose of this project is Manabie assignment for Mobile Engineer.
+- I used the [Manabie](https://www.manabie.com/) logo on the splash screen of the application. Not intended to use it for any personal reason. Hope it does not cause any discomfort.
+
 
 - Developed by Hà Minh Tùng.
 - Email: tung.haminh1995@gmail.com
@@ -59,7 +61,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
 ```sh
-flutter build apk -t lib/main.dart
+flutter build apk -t lib/main.dart --release
 ```
 
 ## Testing
